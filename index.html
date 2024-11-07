@@ -1,0 +1,859 @@
+<!DOCTYPE html><html><head><base href=".">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aprenda JavaScript - Tutorial Interativo</title>
+
+<style>
+:root {
+  --bg-color: #f0f2f5;
+  --text-color: #333;
+  --card-bg: white;
+  --code-bg: #1e1e1e;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --card-bg: #2d2d2d;
+  --code-bg: #000000;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.header {
+  background: linear-gradient(45deg, #2b2d42, #8d99ae);
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header img {
+  max-width: 100px;
+  height: auto;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dark-mode-toggle {
+  background: transparent;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: var(--text-color);
+}
+
+.tutorial-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .tutorial-section {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.code-block {
+  background: var(--code-bg);
+  color: #d4d4d4;
+  padding: 15px;
+  border-radius: 5px;
+  font-family: 'Consolas', monospace;
+  overflow-x: auto;
+}
+
+.button {
+  background: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.button:hover {
+  background: #45a049;
+}
+
+[data-theme="dark"] .button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+}
+
+[data-theme="dark"] .button:hover {
+  background: #45a049;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.number-card {
+  padding: 10px 20px;
+  background: #fff;
+  border: 2px solid #4CAF50;
+  border-radius: 5px;
+  cursor: grab;
+}
+
+#jsonDemo {
+    margin-top: 15px;
+    background: var(--card-bg);
+    border-radius: 5px;
+    padding: 15px;
+}
+
+#output {
+    background: var(--card-bg);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+[data-theme="dark"] #jsonDemo,
+[data-theme="dark"] #output,
+[data-theme="dark"] #userResult {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] button {
+  background: #3d3d3d;
+  color: white;
+  border: 1px solid #555;
+}
+
+[data-theme="dark"] input::placeholder {
+  color: #aaa;
+}
+
+[data-theme="dark"] button:hover {
+  background: #4d4d4d;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Logo JavaScript em amarelo e preto, formato 3D" width="100" height="100">
+  <div class="header-content">
+    <h1>Aprenda JavaScript</h1>
+    <p>Tutorial completo para iniciantes</p>
+  </div>
+  <button id="darkModeToggle" class="dark-mode-toggle">
+    <svg width="20" height="20" viewBox="0 0 24 24">
+      <path class="moon" fill="currentColor" d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zM12 19c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"></path>
+      <path class="sun" fill="currentColor" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5z"></path>
+    </svg>
+  </button>
+</div>
+
+<div class="container">
+  <section class="tutorial-section">
+    <div class="card">
+      <h2>1. Introdução ao JavaScript</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/BXqUH86F-kA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      </div>
+      <div class="code-block">
+        <pre>// Seu primeiro programa JavaScript
+console.log("Olá, Mundo!");
+
+// Variáveis
+let nome = "João";
+const idade = 25;
+
+// Função simples
+function saudacao() {
+    alert("Bem-vindo ao JavaScript!");
+}
+        </pre>
+      </div>
+      <button class="button" onclick="saudacao()">Testar código</button>
+    </div>
+
+    <div class="card">
+      <h2>2. Estruturas de Controle</h2>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/K5QaTfE5ylk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+      </div>
+      <div class="code-block">
+        <pre>// Condicionais
+if (idade &gt;= 18) {
+    console.log("Maior de idade");
+} else {
+    console.log("Menor de idade");
+}
+
+// Loops
+for(let i = 0; i &lt; 5; i++) {
+    console.log("Número: " + i);
+}
+        </pre>
+      </div>
+      <button class="button" onclick="testarEstruturasControle()">Testar código</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>3. Funções e Eventos</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/mc3TKp2XzhI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </div>
+    <div id="practice-area"></div>
+  </section>
+
+  <section class="card">
+    <h2>4. Brincando com Números</h2>
+    <div class="code-block">
+      <pre>// Jogo de Adivinhação
+function jogarAdivinhar() {
+    const numeroSecreto = Math.floor(Math.random() * 20) + 1; // Alterado para números de 1 a 20
+    let tentativas = 0;
+    let acertou = false;
+    
+    while (!acertou &amp;&amp; tentativas &lt; 5) { // Reduzido para 5 tentativas
+        let palpite = prompt("Adivinhe o número (entre 1 e 20):"); // Alterado texto
+        tentativas++;
+        
+        if (palpite == numeroSecreto) {
+            acertou = true;
+            if (tentativas &lt; melhorPontuacao) {
+                melhorPontuacao = tentativas;
+                document.getElementById('melhorPontuacao').textContent = melhorPontuacao;
+            }
+            alert(`Parabéns! Você acertou em ${tentativas} tentativas!`);
+        } else if (palpite &lt; numeroSecreto) {
+            alert("Tente um número MAIOR!");
+        } else {
+            alert("Tente um número MENOR!");
+        }
+    }
+    
+    if (!acertou) {
+        alert(`Game Over! O número era ${numeroSecreto}`);
+    }
+
+    totalJogos++;
+    document.getElementById('jogosJogados').textContent = totalJogos;
+}
+      </pre>
+    </div>
+    <button class="button" onclick="jogarAdivinhar()">Jogar Agora!</button>
+
+    <div class="game-stats" id="gameStats" style="margin-top: 20px; text-align: center;">
+      <h3>Estatísticas do Jogo</h3>
+      <p>Jogos Jogados: <span id="jogosJogados">0</span></p>
+      <p>Melhor Pontuação: <span id="melhorPontuacao">-</span></p>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>5. ES6+ Features</h2>
+    <div class="video-container">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NCwa_xi0Uuc?si=fARkBfeg5mtqyYLR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    </div>
+   
+    <div id="es6-demo" style="margin-top: 20px;">
+      <h3>Demonstração Interativa de ES6+</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0;">
+        <div>
+          <input type="text" id="nameInput" placeholder="Digite seu nome" style="padding: 8px; width: 100%; margin-bottom: 10px;">
+          <input type="number" id="ageInput" placeholder="Digite sua idade" style="padding: 8px; width: 100%;">
+        </div>
+        <div id="output" style="background: var(--card-bg); padding: 15px; border-radius: 5px; color: var(--text-color);">
+  Resultado aparecerá aqui...
+</div>
+      </div>
+      <button class="button" onclick="demonstrarES6()">Demonstrar ES6+</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>6. Manipulação do DOM</h2>
+    <div id="dom-practice">
+      <div style="text-align: center; margin: 20px;">
+        <h3>Jogo da Memória com Cores</h3>
+        <p>Clique nas cartas para encontrar os pares de cores!</p>
+        <div id="memory-game" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 400px; margin: 20px auto;">
+        </div>
+        <button id="resetGame" class="button">Reiniciar Jogo</button>
+        <div id="score" style="margin-top: 15px;">
+          <p>Tentativas: <span id="attempts">0</span></p>
+          <p>Pares encontrados: <span id="pairs">0</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>7. JSON e APIs</h2>
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/xYrm50TcncY?si=jlgbr2opkHwqwemD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
+    </div>
+    
+    <div class="json-demo" style="margin: 20px 0;">
+        <h3>Demonstração de JSON</h3>
+        <div style="margin: 15px 0;">
+          <input type="text" id="jsonNameInput" placeholder="Nome" style="padding: 8px; margin-right: 10px;">
+          <input type="email" id="jsonEmailInput" placeholder="Email" style="padding: 8px; margin-right: 10px;">
+          <input type="text" id="jsonInterestInput" placeholder="Interesses (separados por vírgula)" style="padding: 8px; margin-right: 10px;">
+          <button class="button" onclick="adicionarUsuarioJSON()">Adicionar Usuário</button>
+        </div>
+        <button class="button" onclick="demonstrarJSON()">Mostrar JSON</button>
+        <div id="jsonDemo" style="margin-top: 15px;"></div>
+    </div>
+    
+    <div class="api-demo" style="margin: 20px 0;">
+        <h3>Demonstração de API</h3>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+            <input type="text" id="userInput" placeholder="Digite um nome de usuário do GitHub" style="flex: 1; padding: 8px;">
+            <button class="button" onclick="buscarUsuarioGithub()">Buscar Usuário</button>
+        </div>
+        
+        <div id="userResult" style="background: #f5f5f5; padding: 15px; border-radius: 5px; display: none;">
+            <img id="userAvatar" src="" alt="Avatar do usuário" style="width: 100px; height: 100px; border-radius: 50%;">
+            <h4 id="userName" style="margin: 10px 0;"></h4>
+            <p id="userBio"></p>
+            <div id="userStats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;">
+                <div>Repositórios: <span id="userRepos"></span></div>
+                <div>Seguidores: <span id="userFollowers"></span></div>
+                <div>Seguindo: <span id="userFollowing"></span></div>
+            </div>
+        </div>
+    </div>
+  </section>
+</div>
+
+<script>
+// Add at the beginning of the existing <script> section
+function toggleDarkMode() {
+  const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+// Initialize dark mode based on saved preference
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  darkModeToggle.addEventListener('click', toggleDarkMode);
+});
+
+// Função de saudação
+function saudacao() {
+    alert("Bem-vindo ao JavaScript!");
+}
+
+function testarEstruturasControle() {
+    let idade = parseInt(prompt("Digite uma idade para testar:"));
+    
+    if (idade >= 18) {
+        alert("Maior de idade");
+    } else {
+        alert("Menor de idade");
+    }
+    
+    alert("Agora vamos ver o loop em ação!");
+    
+    let resultado = "";
+    for(let i = 0; i < 5; i++) {
+        resultado += "Número: " + i + "\n";
+    }
+    alert(resultado);
+}
+
+// Área de prática interativa com animações e jogos
+document.addEventListener('DOMContentLoaded', function() {
+    const practiceArea = document.getElementById('practice-area');
+    
+    // Criar área de jogo
+    const gameArea = document.createElement('div');
+    gameArea.style.width = '300px';
+    gameArea.style.height = '300px';
+    gameArea.style.border = '2px solid #333';
+    gameArea.style.position = 'relative';
+    gameArea.style.margin = '20px auto';
+    gameArea.style.backgroundColor = '#f0f0f0';
+
+    // Criar jogador
+    const player = document.createElement('div');
+    player.style.width = '50px';
+    player.style.height = '50px';
+    player.style.backgroundColor = '#4CAF50';
+    player.style.position = 'absolute';
+    player.style.left = '125px';
+    player.style.top = '125px';
+    player.style.transition = 'all 0.3s';
+    player.style.borderRadius = '50%';
+
+    // Adicionar elementos ao DOM
+    gameArea.appendChild(player);
+    practiceArea.appendChild(gameArea);
+
+    // Contador de pontos
+    const scoreDisplay = document.createElement('div');
+    scoreDisplay.textContent = 'Pontos: 0';
+    scoreDisplay.style.textAlign = 'center';
+    scoreDisplay.style.fontSize = '20px';
+    scoreDisplay.style.margin = '10px';
+    practiceArea.appendChild(scoreDisplay);
+
+    // Variáveis do jogo
+    let score = 0;
+    let playerPos = { x: 125, y: 125 };
+    
+    // Função para mover o jogador
+    function movePlayer(e) {
+        const step = 10;
+        switch(e.key) {
+            case 'ArrowUp':
+                playerPos.y = Math.max(0, playerPos.y - step);
+                break;
+            case 'ArrowDown':
+                playerPos.y = Math.min(250, playerPos.y + step);
+                break;
+            case 'ArrowLeft':
+                playerPos.x = Math.max(0, playerPos.x - step);
+                break;
+            case 'ArrowRight':
+                playerPos.x = Math.min(250, playerPos.y + step);
+                break;
+        }
+        player.style.left = playerPos.x + 'px';
+        player.style.top = playerPos.y + 'px';
+    }
+
+    // Criar alvo
+    function createTarget() {
+        const target = document.createElement('div');
+        target.style.width = '20px';
+        target.style.height = '20px';
+        target.style.backgroundColor = 'red';
+        target.style.position = 'absolute';
+        target.style.borderRadius = '50%';
+        
+        // Posição aleatória
+        const x = Math.floor(Math.random() * 280);
+        const y = Math.floor(Math.random() * 280);
+        target.style.left = x + 'px';
+        target.style.top = y + 'px';
+
+        // Verificar colisão
+        const checkCollision = setInterval(() => {
+            const playerRect = player.getBoundingClientRect();
+            const targetRect = target.getBoundingClientRect();
+
+            if (!(playerRect.right < targetRect.left || 
+                playerRect.left > targetRect.right || 
+                playerRect.bottom < targetRect.top || 
+                playerRect.top > targetRect.bottom)) {
+                score += 1;
+                scoreDisplay.textContent = `Pontos: ${score}`;
+                target.remove();
+                clearInterval(checkCollision);
+                createTarget();
+            }
+        }, 100);
+
+        gameArea.appendChild(target);
+    }
+
+    // Iniciar jogo
+    window.addEventListener('keydown', movePlayer);
+    createTarget();
+
+    // Instruções
+    const instructions = document.createElement('p');
+    instructions.textContent = 'Use as setas do teclado para mover o círculo verde e coletar os pontos vermelhos!';
+    instructions.style.textAlign = 'center';
+    practiceArea.appendChild(instructions);
+});
+
+// Estatísticas do Jogo
+let totalJogos = 0;
+let melhorPontuacao = Infinity;
+
+function jogarAdivinhar() {
+    const numeroSecreto = Math.floor(Math.random() * 20) + 1; // Alterado para números de 1 a 20
+    let tentativas = 0;
+    let acertou = false;
+    
+    while (!acertou && tentativas < 5) { // Reduzido para 5 tentativas
+        let palpite = prompt("Adivinhe o número (entre 1 e 20):"); // Alterado texto
+        tentativas++;
+        
+        if (palpite == numeroSecreto) {
+            acertou = true;
+            if (tentativas < melhorPontuacao) {
+                melhorPontuacao = tentativas;
+                document.getElementById('melhorPontuacao').textContent = melhorPontuacao;
+            }
+            alert(`Parabéns! Você acertou em ${tentativas} tentativas!`);
+        } else if (palpite < numeroSecreto) {
+            alert("Tente um número MAIOR!");
+        } else {
+            alert("Tente um número MENOR!");
+        }
+    }
+    
+    if (!acertou) {
+        alert(`Game Over! O número era ${numeroSecreto}`);
+    }
+
+    totalJogos++;
+    document.getElementById('jogosJogados').textContent = totalJogos;
+}
+
+// Arrays e Objetos demonstração
+let usuarios = [
+    {
+        "id": 1,
+        "nome": "Ana Silva",
+        "email": "ana@email.com",
+        "interesses": ["JavaScript", "React", "Node.js"]
+    }
+];
+
+function adicionarUsuarioJSON() {
+    const nome = document.getElementById('jsonNameInput').value;
+    const email = document.getElementById('jsonEmailInput').value;
+    const interesses = document.getElementById('jsonInterestInput').value.split(',').map(i => i.trim());
+    
+    if (!nome || !email || !interesses) {
+        alert('Por favor, preencha todos os campos!');
+        return;
+    }
+    
+    const novoUsuario = {
+        id: usuarios.length + 1,
+        nome: nome,
+        email: email,
+        interesses: interesses
+    };
+    
+    usuarios.push(novoUsuario);
+    demonstrarJSON();
+    
+    // Clear inputs
+    document.getElementById('jsonNameInput').value = '';
+    document.getElementById('jsonEmailInput').value = '';
+    document.getElementById('jsonInterestInput').value = '';
+}
+
+function demonstrarJSON() {
+    const jsonData = {
+        "usuarios": usuarios,
+        "categoria": "programação",
+        "ativo": true
+    };
+
+    const jsonString = JSON.stringify(jsonData, null, 2);
+
+    document.getElementById('jsonDemo').innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div>
+                <h4>JSON String:</h4>
+                <pre style="background: #f5f5f5; padding: 10px; overflow-x: auto;">${jsonString}</pre>
+            </div>
+            <div>
+                <h4>Usuários Cadastrados:</h4>
+                ${usuarios.map(user => `
+                    <div style="background: #f5f5f5; padding: 10px; margin: 5px 0; border-radius: 5px;">
+                        <p><strong>Nome:</strong> ${user.nome}</p>
+                        <p><strong>Email:</strong> ${user.email}</p>
+                        <p><strong>Interesses:</strong> ${user.interesses.join(', ')}</p>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+}
+
+// Array Game Logic
+let gameScore = 0;
+let currentNumbers = [];
+
+function newGame() {
+    currentNumbers = Array.from({length: 6}, () => Math.floor(Math.random() * 100));
+    const container = document.getElementById('numbers-container');
+    container.innerHTML = '';
+    
+    currentNumbers.forEach(num => {
+        const numDiv = document.createElement('div');
+        numDiv.className = 'number-card';
+        numDiv.textContent = num;
+        numDiv.style.padding = '10px 20px';
+        numDiv.style.background = '#fff';
+        numDiv.style.border = '2px solid #4CAF50';
+        numDiv.style.borderRadius = '5px';
+        numDiv.style.cursor = 'grab';
+        numDiv.draggable = true;
+        
+        numDiv.addEventListener('dragstart', drag);
+        numDiv.addEventListener('dragover', allowDrop);
+        numDiv.addEventListener('drop', drop);
+        
+        container.appendChild(numDiv);
+    });
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.textContent);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    const draggedNum = ev.dataTransfer.getData("text");
+    const targetNum = ev.target.textContent;
+    
+    ev.target.textContent = draggedNum;
+    ev.dataTransfer.clearData();
+}
+
+function checkOrder() {
+    const container = document.getElementById('numbers-container');
+    const currentOrder = Array.from(container.children).map(div => parseInt(div.textContent));
+    const sortedOrder = [...currentOrder].sort((a, b) => a - b);
+    
+    if (JSON.stringify(currentOrder) === JSON.stringify(sortedOrder)) {
+        gameScore += 10;
+        alert('Parabéns! Ordem correta!');
+    } else {
+        alert('Tente novamente! A ordem não está correta.');
+    }
+    
+    document.getElementById('score-display').textContent = `Pontuação: ${gameScore}`;
+    newGame();
+}
+
+// Initialize the game when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    newGame();
+});
+
+// DOM Memory Game
+document.addEventListener('DOMContentLoaded', function() {
+  const memoryGame = document.getElementById('memory-game');
+  const resetButton = document.getElementById('resetGame');
+  const attemptsDisplay = document.getElementById('attempts');
+  const pairsDisplay = document.getElementById('pairs');
+  
+  const colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00', '#FF00FF', '#00FFFF', '#FFA500', '#800080'];
+  let cards = [];
+  let flippedCards = [];
+  let matchedPairs = 0;
+  let attempts = 0;
+  
+  function createCard(color) {
+    const card = document.createElement('div');
+    card.style.backgroundColor = '#ddd';
+    card.style.height = '80px';
+    card.style.borderRadius = '5px';
+    card.style.cursor = 'pointer';
+    card.style.transition = 'background-color 0.3s ease';
+    card.dataset.color = color;
+    
+    card.addEventListener('click', flipCard);
+    return card;
+  }
+  
+  function flipCard() {
+    if (flippedCards.length === 2 || flippedCards.includes(this) || this.style.backgroundColor !== 'rgb(221, 221, 221)') return;
+    
+    this.style.backgroundColor = this.dataset.color;
+    flippedCards.push(this);
+    
+    if (flippedCards.length === 2) {
+      attempts++;
+      attemptsDisplay.textContent = attempts;
+      
+      if (flippedCards[0].dataset.color === flippedCards[1].dataset.color) {
+        matchedPairs++;
+        pairsDisplay.textContent = matchedPairs;
+        flippedCards = [];
+        
+        if (matchedPairs === colors.length) {
+          setTimeout(() => alert('Parabéns! Você completou o jogo em ' + attempts + ' tentativas!'), 300);
+        }
+      } else {
+        setTimeout(() => {
+          flippedCards[0].style.backgroundColor = '#ddd';
+          flippedCards[1].style.backgroundColor = '#ddd';
+          flippedCards = [];
+        }, 1000);
+      }
+    }
+  }
+  
+  function initializeGame() {
+    memoryGame.innerHTML = '';
+    matchedPairs = 0;
+    attempts = 0;
+    attemptsDisplay.textContent = '0';
+    pairsDisplay.textContent = '0';
+    
+    // Create pairs of cards
+    const gameColors = [...colors, ...colors];
+    // Shuffle colors
+    for (let i = gameColors.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [gameColors[i], gameColors[j]] = [gameColors[j], gameColors[i]];
+    }
+    
+    // Create and add cards to the game
+    gameColors.forEach(color => {
+      const card = createCard(color);
+      memoryGame.appendChild(card);
+    });
+  }
+  
+  resetButton.addEventListener('click', initializeGame);
+  initializeGame();
+});
+
+// Simulação de requisição assíncrona
+function simularRequisicao() {
+    const progressBar = document.getElementById('progress');
+    const statusText = document.getElementById('status-text');
+    const button = document.querySelector('#async-demo button');
+    
+    button.disabled = true;
+    progressBar.style.width = '0%';
+    statusText.textContent = 'Carregando...';
+    
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 10;
+        progressBar.style.width = `${progress}%`;
+        
+        if (progress >= 100) {
+            clearInterval(interval);
+            statusText.textContent = 'Requisição concluída!';
+            button.disabled = false;
+            
+            setTimeout(() => {
+                statusText.textContent = 'Clique para iniciar';
+                progressBar.style.width = '0%';
+            }, 2000);
+        }
+    }, 200);
+}
+
+function demonstrarES6() {
+  const nome = document.getElementById('nameInput').value;
+  const idade = document.getElementById('ageInput').value;
+  
+  // Usando template literals e arrow functions
+  const formatarPessoa = (nome, idade) => `Olá ${nome}! Você tem ${idade} anos.`;
+  
+  // Criando objeto e usando destructuring
+  const pessoa = { nome, idade };
+  const { nome: n, idade: i } = pessoa;
+  
+  // Usando spread com arrays
+  const hobbies = ['programar', 'estudar', 'ler'];
+  const todosInteresses = [...hobbies, 'JavaScript'];
+  
+  const output = document.getElementById('output');
+  output.innerHTML = `
+    <p>${formatarPessoa(n, i)}</p>
+    <p>Seus interesses: ${todosInteresses.join(', ')}</p>
+  `;
+}
+
+function buscarUsuarioGithub() {
+    const username = document.getElementById('userInput').value;
+    const resultDiv = document.getElementById('userResult');
+    
+    if (!username) {
+        alert('Por favor, digite um nome de usuário');
+        return;
+    }
+    
+    resultDiv.style.display = 'none';
+    
+    fetch(`https://api.github.com/users/${username}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Usuário não encontrado');
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById('userAvatar').src = data.avatar_url;
+            document.getElementById('userName').textContent = data.name || data.login;
+            document.getElementById('userBio').textContent = data.bio || 'Sem biografia';
+            document.getElementById('userRepos').textContent = data.public_repos;
+            document.getElementById('userFollowers').textContent = data.followers;
+            document.getElementById('userFollowing').textContent = data.following;
+            
+            resultDiv.style.display = 'block';
+        })
+        .catch(error => {
+            alert(error.message);
+        });
+}
+</script>
+
+</body></html>
